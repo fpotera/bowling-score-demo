@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core">
+
+    <h:head>
+        <title>.:: Roll ::.</title>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+        <h:outputStylesheet library="css" name="css/style.css" />
+    </h:head>
+
+    <h:body style="margin-left:50px">
+        <h:form id="form1">
+            <p:outputPanel rendered="#{!bowlingCounterBean.isGameFinished()}">
+                <h2>Roll</h2>
+                <p:commandButton value="0" action="#{bowlingCounterBean.doRoll(0)}" update=":form2:score,:form1"/>
+                <p:commandButton value="1" action="#{bowlingCounterBean.doRoll(1)}" update=":form2:score,:form1"/>
+                <p:commandButton value="2" action="#{bowlingCounterBean.doRoll(2)}" update=":form2:score,:form1"/>
+                <p:commandButton value="3" action="#{bowlingCounterBean.doRoll(3)}" update=":form2:score,:form1"/>
+                <p:commandButton value="4" action="#{bowlingCounterBean.doRoll(4)}" update=":form2:score,:form1"/>
+                <p:commandButton value="5" action="#{bowlingCounterBean.doRoll(5)}" update=":form2:score,:form1"/>
+                <p:commandButton value="6" action="#{bowlingCounterBean.doRoll(6)}" update=":form2:score,:form1"/>
+                <p:commandButton value="7" action="#{bowlingCounterBean.doRoll(7)}" update=":form2:score,:form1"/>
+                <p:commandButton value="8" action="#{bowlingCounterBean.doRoll(8)}" update=":form2:score,:form1"/>
+                <p:commandButton value="9" action="#{bowlingCounterBean.doRoll(9)}" update=":form2:score,:form1"/>
+                <p:commandButton value="10" action="#{bowlingCounterBean.doRoll(10)}" update=":form2:score,:form1"/>
+            </p:outputPanel>
+            <p:outputPanel rendered="#{bowlingCounterBean.isGameFinished()}">
+                <h2>Game over</h2>
+                <p:commandButton value="Reset game" action="#{bowlingCounterBean.resetGame()}" update=":form2:score,:form1"/>
+            </p:outputPanel>
+        </h:form>
+        <h:form id="form2">
+            <h2>Score</h2>
+            <p:outputPanel id="score">
+                <table>
+                    <tr>
+                        <ui:repeat value="#{bowlingCounterBean.buildScore()}" var="frame">
+                            <td style="border:3px solid #6CB4EE; border-collapse:collapse;">
+                                <table>
+                                    <tr>
+                                        <td>#{frame[2]}</td>
+                                        <td>#{frame[1]}</td>
+                                        <td>#{frame[0]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="center">#{frame[3]}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </ui:repeat>
+                    </tr>
+                </table>
+            </p:outputPanel>
+        </h:form>
+    </h:body>
+</html>
