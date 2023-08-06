@@ -101,7 +101,7 @@ public class BowlingCounterService {
         else if(crtRoll == FR){
             crtRoll = SR;
         }
-        else if(crtRoll == SR && crtFrame == noOfFrames-1) {
+        else if(crtRoll == SR && crtFrame == noOfFrames-1 && frames[crtFrame][FR]+frames[crtFrame][SR] != STRIKE) {
             crtRoll = TR;
         }
         else {
